@@ -7,6 +7,10 @@
   <title>Delete Account | Car Dealer Tycoon</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -22,23 +26,32 @@
 
     .card {
       background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 16px;
       padding: 30px;
       box-shadow: 0 0 30px rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
     }
 
     h1 {
       text-align: center;
-      font-size: 2.2em;
-      margin-bottom: 10px;
+      font-size: 2.5em;
+      margin-bottom: 5px;
       background: linear-gradient(90deg, #38bdf8, #22c55e);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
+    .subtitle {
+      text-align: center;
+      color: #94a3b8;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
     p {
-      line-height: 1.6;
       color: #cbd5f5;
+      line-height: 1.6;
     }
 
     .highlight {
@@ -46,23 +59,74 @@
       font-weight: bold;
     }
 
-    .email-box {
+    .section {
+      margin-top: 25px;
+      padding: 18px;
       background: rgba(30, 41, 59, 0.6);
+      border-radius: 12px;
+      border: 1px solid transparent;
+      transition: 0.3s;
+    }
+
+    .section:hover {
+      border: 1px solid #22c55e;
+      box-shadow: 0 0 12px rgba(34,197,94,0.3);
+    }
+
+    .email-box {
+      background: rgba(15, 23, 42, 0.9);
       padding: 12px;
       border-radius: 8px;
       margin-top: 10px;
       font-weight: bold;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
     ul {
       margin-left: 20px;
+      margin-top: 10px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .btn {
+      display: block;
+      margin: 25px auto 10px;
+      padding: 14px 22px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      background: linear-gradient(90deg, #38bdf8, #22c55e);
+      color: #020617;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(34,197,94,0.5);
     }
 
     footer {
       margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255,255,255,0.1);
       text-align: center;
       font-size: 0.9em;
       color: #94a3b8;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8em;
+      }
+      .card {
+        padding: 20px;
+      }
     }
   </style>
 
@@ -75,37 +139,48 @@
 
 ```
 <h1>Delete Account</h1>
+<div class="subtitle">Car Dealer Tycoon</div>
 
 <p>
   If you would like to delete your account and associated data for 
   <span class="highlight">Car Dealer Tycoon</span>, please follow the steps below.
 </p>
 
-<h3>📩 Request via Email</h3>
-<p>Send an email to:</p>
+<div class="section">
+  <h3>📩 Request via Email</h3>
+  <p>Send an email to:</p>
 
-<div class="email-box">
-  reemxstudios@gmail.com
+  <div class="email-box">
+    support.reemxstudios@gmail.com
+  </div>
+
+  <p><strong>Subject:</strong> Account Deletion Request</p>
+
+  <p>Please include:</p>
+  <ul>
+    <li>Your Google email used in the game</li>
+  </ul>
+
+  <button class="btn" onclick="sendEmail()">
+    Request Account Deletion
+  </button>
 </div>
 
-<p><strong>Subject:</strong> Account Deletion Request</p>
+<div class="section">
+  <h3>🗑️ What happens after request?</h3>
+  <ul>
+    <li>Your account will be permanently deleted</li>
+    <li>Your game progress will be removed</li>
+    <li>This process may take up to 3–5 working days</li>
+  </ul>
+</div>
 
-<p>Please include:</p>
-<ul>
-  <li>Your Google email used in the game</li>
-</ul>
-
-<h3>🗑️ What happens after request?</h3>
-<ul>
-  <li>Your account will be permanently deleted</li>
-  <li>Your game progress will be removed</li>
-  <li>This process may take up to 3–5 working days</li>
-</ul>
-
-<h3>📦 Data Retention</h3>
-<p>
-  Some limited data may be retained temporarily for legal or security purposes.
-</p>
+<div class="section">
+  <h3>📦 Data Retention</h3>
+  <p>
+    Some limited data may be retained temporarily for legal or security purposes.
+  </p>
+</div>
 
 <footer>
   ReemX Studios • Car Dealer Tycoon
@@ -114,6 +189,16 @@
 
   </div>
 </div>
+
+<script>
+function sendEmail() {
+  const email = "support.reemxstudios@gmail.com";
+  const subject = "Account Deletion Request";
+  const body = "Hello,\n\nI would like to request deletion of my account for Car Dealer Tycoon.\n\nGoogle Email: \n\nThank you.";
+
+  window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+</script>
 
 </body>
 </html>
